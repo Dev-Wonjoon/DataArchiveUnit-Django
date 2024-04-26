@@ -10,7 +10,7 @@ class MediaItem(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.path
+        return str(self.path)
 
 
 class Album(models.Model):

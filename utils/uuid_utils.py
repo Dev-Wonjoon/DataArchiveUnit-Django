@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def upload_to_rename(instance, filename):
-    ext = filename.split('.')[-1]
+    ext = filename.split('.')[-1].lower()
 
     now = datetime.now()
 
@@ -13,6 +13,7 @@ def upload_to_rename(instance, filename):
 
     new_filename = f'{uuid.uuid4()}.{ext}'
     
-    instance.extension = ext
+    if instance is not None:
+        instance.extension = ext
 
     return f'uploads/{year}/{month}/{day}/{new_filename}'
