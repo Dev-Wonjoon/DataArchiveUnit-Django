@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face{
+    font-family: 'Freesentation';
+    src: url('../fonts/Freesentation-v1.003/Freesentation-4Regular.ttf')
+}

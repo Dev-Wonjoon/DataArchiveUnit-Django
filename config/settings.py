@@ -3,6 +3,8 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_URL = os.path.join(BASE_DIR, 'templates')
+
 
 env = environ.Env(DEBUG=(bool, True))
 
@@ -14,7 +16,7 @@ UPLOAD_PATH = env('UPLOAD_PATH')
 
 SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
@@ -30,9 +32,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third apps
+    'tailwind',
+    'theme',
+
     # my apps
     'album',
     'core',
+    'downloader',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +57,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATE_URL
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,6 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATICFILES_DIRS = [
+    BASE_DIR / env('STATIC_URL'),
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -124,3 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_ROOT = os.path.abspath(UPLOAD_PATH)
+
+TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = r'C:/Program Files/nodejs/npm.cmd'
