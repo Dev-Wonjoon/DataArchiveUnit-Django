@@ -3,5 +3,5 @@ from album.models import MediaItem
 
 class Tag(models.Model):
     
-    name = models.CharField(max_length=24, null=False)
+    name = models.CharField(max_length=24, null=False, unique=True)
     mapping = models.ManyToManyField(MediaItem)

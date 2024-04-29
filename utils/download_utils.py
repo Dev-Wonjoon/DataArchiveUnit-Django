@@ -12,10 +12,6 @@ class YoutubeDownloader:
                 'default_search': 'ytsearch',
                 'format': 'bestvideo+bestaudio',
                 'outtmpl': f'F:/dau/media/{today}%(title)s.%(ext)s',
-                'postprocessors': [{
-                    'key': 'FFmpegVideoConvertor',
-                    'preferedformat': 'mp4',
-                }],
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info_dict = ydl.extract_info(self.video_url, download=True)
