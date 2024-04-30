@@ -4,6 +4,15 @@
 
 <div class="flex items-center justify-center h-screen">
     <h1>Media</h1>
+
+    {% for media in media_list %}
+    <div>
+        <h1> {{ media.path }} </h1>
+        <li>{{ media.created_at }}</li>
+        <li> {{ media.updated_at }} </li>
+    </div>
+
+    {% endfor %}
 </div>
 
 {% endblock content %}

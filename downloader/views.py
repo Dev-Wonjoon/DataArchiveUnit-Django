@@ -1,7 +1,7 @@
 import logging
 
 from django.views import View
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from album.models import MediaItem
 from downloader.models import Url
 from utils.download_utils import YoutubeDownloader
@@ -38,12 +38,13 @@ class YoutubeDownloadView(View):
             return render(request, self.template_name, {'error': error_message})
             
         try:
+            logging.info(f"{video_url} downloading")
             file_path = upload_to_rename(None, filename)
             file_extension = filename.split('.')[-1].lower()
-            url_item = Url(title=video_title, link=video_url, site='Youtube')
             media_item = MediaItem(path=file_path, extension=file_extension)
-            url_item.save()
             media_item.save()
+            url_item = Url(title=video_title, link=video_url, site='Youtube', media=media_item)
+            url_item.save()
 
             return render(request, 'downloader/download_form.html', {'message': '비디오 다운로드가 완료 되었습니다.'})
             

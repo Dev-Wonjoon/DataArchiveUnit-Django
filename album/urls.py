@@ -5,5 +5,5 @@ from .views import MediaListView
 app_name = 'album'
 
 urlpatterns = [
-    path('', MediaListView.as_view(), name='mediaIndex'),
+    path('', MediaListView.as_view(), name='index'),
 ]

@@ -16,4 +16,7 @@ def upload_to_rename(instance, filename):
     if instance is not None:
         instance.extension = ext
 
-    return f'uploads/{year}/{month}/{day}/{new_filename}'
+    return f'media/{year}/{month}/{day}/{new_filename}'
+
+def video_to_rename():
+    return uuid.uuid4()

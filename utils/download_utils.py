@@ -1,5 +1,6 @@
 import yt_dlp, os
 from datetime import datetime
+from .uuid_utils import video_to_rename
 
 class YoutubeDownloader:
     def __init__(self, video_url):
@@ -11,7 +12,7 @@ class YoutubeDownloader:
             ydl_opts = {
                 'default_search': 'ytsearch',
                 'format': 'bestvideo+bestaudio',
-                'outtmpl': f'F:/dau/media/{today}%(title)s.%(ext)s',
+                'outtmpl': f'F:/dau/media/{today}{video_to_rename()}.%(ext)s',
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info_dict = ydl.extract_info(self.video_url, download=True)

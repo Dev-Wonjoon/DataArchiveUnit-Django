@@ -196,3 +196,4 @@ pyrightconfig.json
 fonts/
 
 remove_migrations.bat
+*_initial.py
